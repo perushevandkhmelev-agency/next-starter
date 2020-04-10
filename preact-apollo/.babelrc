@@ -1,0 +1,41 @@
+{
+  "presets": [
+    ["next/babel",
+      {
+        "preset-env": { "targets": { "browsers": "defaults" }, "useBuiltIns": "usage",  "corejs": 2 },
+        "styled-jsx": { "optimizeForSpeed": true, "sourceMaps": false }
+      }
+    ]
+  ],
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose" : true }],
+    ["module-resolver", { "root": ["./"] }],
+    ["lodash"]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "styled-components",
+          {
+            "displayName": true,
+            "ssr": true
+          }
+        ]
+      ]
+    },
+    "production": {
+      "plugins": [
+        ["graphql-tag"],
+        [
+          "styled-components",
+          {
+            "displayName": false,
+            "ssr": true
+          }
+        ]
+      ]
+    }
+  }
+}
