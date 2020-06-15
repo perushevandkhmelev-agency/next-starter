@@ -47,6 +47,11 @@ export default createGlobalStyle`
     font-weight: bold;
   }
 
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
   #nprogress {
     pointer-events: none;
   }
