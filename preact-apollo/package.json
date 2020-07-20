@@ -39,7 +39,7 @@
     "graphql-tag": "^2.10.3",
     "isomorphic-unfetch": "^3.0.0",
     "koa": "^2.11.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "next": "^9.3.4",
     "next-routes": "^1.4.2",
     "nprogress": "^0.2.0",
