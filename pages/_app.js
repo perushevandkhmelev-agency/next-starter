@@ -1,8 +1,11 @@
+import 'normalize.css'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 import { GlobalMeta } from 'utils/meta'
 import { ApolloProvider } from '@apollo/client'
 import { initializeApollo, useApollo } from 'utils/apolloClient'
+import GlobalStyles from 'utils/globalStyles'
+import { IconFont } from 'components/Icon'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
@@ -14,6 +17,8 @@ function App({ Component, pageProps }) {
   return (
     <>
       <GlobalMeta />
+      <GlobalStyles />
+      <IconFont />
       <ApolloProvider client={apolloClient}>
         <Component {...pageProps} />
       </ApolloProvider>

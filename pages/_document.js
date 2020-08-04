@@ -1,8 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import Helmet from 'react-helmet'
-import GlobalStyles from 'utils/globalStyle'
-import { IconFont } from 'components/Icon'
 
 const dev = process.env.NODE_ENV !== 'production'
 
@@ -14,14 +12,7 @@ export default class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props =>
-            sheet.collectStyles(
-              <>
-                <App {...props} />
-                <IconFont />
-                <GlobalStyles />
-              </>
-            )
+          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />)
         })
 
       const initialProps = await Document.getInitialProps(ctx)
@@ -53,8 +44,8 @@ export default class MyDocument extends Document {
   // should render on <head>
   get helmetHeadComponents() {
     return Object.keys(this.props.helmet)
-      .filter(el => el !== 'htmlAttributes' && el !== 'bodyAttributes')
-      .map(el => this.props.helmet[el].toComponent())
+      .filter((el) => el !== 'htmlAttributes' && el !== 'bodyAttributes')
+      .map((el) => this.props.helmet[el].toComponent())
   }
 
   render() {
