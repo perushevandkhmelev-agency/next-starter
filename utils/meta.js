@@ -1,5 +1,5 @@
 import Helmet from 'react-helmet'
-import { colors } from 'utils/style'
+import { colors } from 'utils/styles'
 import config from 'config'
 
 const dev = process.env.NODE_ENV !== 'production'

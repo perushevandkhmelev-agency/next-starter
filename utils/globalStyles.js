@@ -1,4 +1,4 @@
-import { colors } from 'utils/style'
+import { colors } from 'utils/styles'
 
 export default function GlobalStyles() {
   return (
