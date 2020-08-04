@@ -15,9 +15,9 @@
   },
   "config": {
     "iconsServer": "http://fontello.com",
-    "iconsConfig": "static/fonts/icon/config.json",
+    "iconsConfig": "public/static/fonts/icon/config.json",
     "iconsLocation": [
-      "static/fonts/icon"
+      "public/static/fonts/icon"
     ]
   },
   "dependencies": {

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import config from 'static/fonts/icon/config.json'
+import config from 'public/static/fonts/icon/config.json'
 
 export const IconFont = () => (
   <style global jsx>
