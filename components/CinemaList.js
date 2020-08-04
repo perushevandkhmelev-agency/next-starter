@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 import { QUERY_ALL_CINEMA_DETAILS } from 'schemas/cinema'
 
 const queryVars = {
