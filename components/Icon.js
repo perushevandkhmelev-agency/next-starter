@@ -1,17 +1,21 @@
-import styled, { css, createGlobalStyle } from 'styled-components'
+import styled, { css } from 'styled-components'
 import config from 'static/fonts/icon/config.json'
 
-export const IconFont = createGlobalStyle`
-  @font-face {
-    font-family: icon;
-    src: url('/static/fonts/icon/icon.woff'), url('/static/fonts/icon/icon.woff2');
-    font-weight: normal;
-    font-style: normal;
-  }
-`
+export const IconFont = () => (
+  <style global jsx>
+    {`
+      @font-face {
+        font-family: icon;
+        src: url('/static/fonts/icon/icon.woff'), url('/static/fonts/icon/icon.woff2');
+        font-weight: normal;
+        font-style: normal;
+      }
+    `}
+  </style>
+)
 
-const nameToChar = name => {
-  const glyph = config.glyphs.find(item => item.css === name)
+const nameToChar = (name) => {
+  const glyph = config.glyphs.find((item) => item.css === name)
   if (glyph) {
     return String.fromCodePoint(glyph.code)
   } else {
@@ -19,7 +23,7 @@ const nameToChar = name => {
   }
 }
 
-export const renderIcon = name => css`
+export const renderIcon = (name) => css`
   font-family: ${config.name};
   speak: none;
   font-style: normal;
@@ -37,5 +41,5 @@ export const renderIcon = name => css`
 `
 
 export default styled.i`
-  ${props => renderIcon(props.name)}
+  ${(props) => renderIcon(props.name)}
 `

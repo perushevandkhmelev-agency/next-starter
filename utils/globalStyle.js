@@ -1,63 +1,64 @@
-import { createGlobalStyle } from 'styled-components'
+import 'normalize.css'
 import { colors } from 'utils/style'
-import { normalize } from 'polished'
 
-export default createGlobalStyle`
-  ${normalize()}
+export default () => (
+  <style global jsx>
+    {`
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
 
-  *,
-  *:before,
-  *:after {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-  }
+      html {
+        width: 100%;
+        height: 100%;
+      }
 
-  html {
-    width: 100%;
-    height: 100%;
-  }
+      body {
+        height: 100%;
+        -webkit-font-smoothing: antialiased;
+      }
 
-  body {
-    height: 100%;
-    -webkit-font-smoothing: antialiased;
-  }
+      #__next {
+        height: 100%;
+      }
 
-  #__next {
-    height: 100%;
-  }
+      a,
+      a:visited {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.25s;
+      }
 
-  a,
-  a:visited {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.25s;
-  }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 0;
+      }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 0;
-  }
+      b,
+      strong {
+        font-weight: bold;
+      }
 
-  b,
-  strong {
-    font-weight: bold;
-  }
+      #nprogress {
+        pointer-events: none;
+      }
 
-  #nprogress {
-    pointer-events: none;
-  }
-
-  #nprogress .bar {
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: ${colors.nprogress};
-  }
-`
+      #nprogress .bar {
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: ${colors.nprogress};
+      }
+    `}
+  </style>
+)
