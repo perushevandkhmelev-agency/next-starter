@@ -1,12 +1,12 @@
 import { useQuery } from '@apollo/react-hooks'
 import { QUERY_ALL_CINEMA_DETAILS } from 'schemas/cinema'
 
-export const queryVars = {
+const queryVars = {
   last: 10,
   first: 10
 }
 
-export default () => {
+function CinemaList() {
   const { loading, error, data } = useQuery(QUERY_ALL_CINEMA_DETAILS, {
     variables: queryVars,
     // Setting this value to true will make the component rerender when
@@ -34,3 +34,5 @@ export default () => {
     </section>
   )
 }
+
+export default CinemaList
