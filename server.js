@@ -1,7 +1,7 @@
 require('dotenv').config()
 require('isomorphic-unfetch')
-const fs = require('fs')
-const Koa = require('koa')
+
+const { createServer } = require('http')
 const next = require('next')
 const routes = require('./routes')
 
@@ -11,15 +11,10 @@ const app = next({ dev })
 const handler = routes.getRequestHandler(app)
 
 app.prepare().then(() => {
-  const server = new Koa()
-
-  server.use(ctx => {
-    ctx.respond = false
-    ctx.res.statusCode = 200
-    handler(ctx.req, ctx.res)
-  })
-
-  server.listen(port, () => {
+  createServer((req, res) => {
+    handler(req, res)
+  }).listen(port, (err) => {
+    if (err) throw err
     console.log(`> Ready on http://localhost:${port}`)
   })
 })
