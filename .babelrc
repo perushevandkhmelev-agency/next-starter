@@ -10,31 +10,19 @@
   "plugins": [
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
     ["@babel/plugin-proposal-class-properties", { "loose" : true }],
-    ["module-resolver", { "root": ["./"] }],
-    ["lodash"]
+    ["babel-plugin-module-resolver", { "root": ["./"] }],
+    ["babel-plugin-lodash"]
   ],
   "env": {
     "development": {
       "plugins": [
-        [
-          "styled-components",
-          {
-            "displayName": true,
-            "ssr": true
-          }
-        ]
+        ["styled-components", { "displayName": true, "ssr": true }]
       ]
     },
     "production": {
       "plugins": [
-        ["graphql-tag"],
-        [
-          "styled-components",
-          {
-            "displayName": false,
-            "ssr": true
-          }
-        ]
+        ["babel-plugin-graphql-tag"],
+        ["styled-components", { "displayName": false, "ssr": true }]
       ]
     }
   }
