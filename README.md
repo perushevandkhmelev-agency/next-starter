@@ -1,6 +1,6 @@
-# Project
+# next-starter
 * `git clone git@github.com:perushevandkhmelev-agency/next-starter.git`
-* `cd next-starter/react-apollo`
+* `cd next-starter`
 * `yarn`
 * put `.env` file with contents given below
 * `yarn build`
