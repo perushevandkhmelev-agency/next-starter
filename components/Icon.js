@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components'
-import config from 'public/static/fonts/icon/config.json'
+import config from 'assets/fonts/icon/config.json'
 
 export const IconFont = () => (
   <style global jsx>
     {`
       @font-face {
         font-family: icon;
-        src: url('/static/fonts/icon/icon.woff'), url('/static/fonts/icon/icon.woff2');
+        src: url('${require('/assets/fonts/icon/icon.woff')}'), url('${require('/assets/fonts/icon/icon.woff2')}');
         font-weight: normal;
         font-style: normal;
       }
