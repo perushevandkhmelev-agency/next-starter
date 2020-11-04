@@ -6,7 +6,7 @@ const queryVars = {
   first: 10
 }
 
-function CinemaList() {
+function ApolloCinemaListExample() {
   const { loading, error, data } = useQuery(QUERY_ALL_CINEMA_DETAILS, {
     variables: queryVars,
     // Setting this value to true will make the component rerender when
@@ -35,4 +35,4 @@ function CinemaList() {
   )
 }
 
-export default CinemaList
+export default ApolloCinemaListExample
