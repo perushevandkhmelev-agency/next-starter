@@ -2,8 +2,6 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import Helmet from 'react-helmet'
 
-const dev = process.env.NODE_ENV !== 'production'
-
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet()

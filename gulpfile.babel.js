@@ -23,7 +23,7 @@ let exec = require('child_process').exec,
     // sends current config in the process.
     let getFontToken = `curl --silent --show-error --fail --output .fontello --form "config=@${pkg.config.iconsConfig}" ${pkg.config.iconsServer} \n`
 
-    return exec(getFontToken + openFont[platform], function(err, stdout, stderr) {
+    return exec(getFontToken + openFont[platform], function (err, stdout, stderr) {
       console.log(stdout)
       if (stderr) {
         console.error(err, stderr)
@@ -56,7 +56,7 @@ let exec = require('child_process').exec,
       'rm -rf .fontello.src .fontello.zip'
     ])
 
-    exec(scripts.join(' \n '), function(err, stdout, stderr) {
+    exec(scripts.join(' \n '), function (err, stdout, stderr) {
       if (stderr) {
         console.error(err, stderr)
       } else {
