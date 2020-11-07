@@ -3,25 +3,25 @@ import PropTypes from 'prop-types'
 import join from 'lodash/join'
 
 function HTMLText({ text, html, component, paragraphMode, ...props }) {
+  let htmlCode = html
   if (text) {
     if (paragraphMode) {
-      html = join(
+      htmlCode = join(
         text.split(/(?:\r)?\n/).map((chunk) => `<p>\n${chunk}\n</p>\n`),
         ''
       )
     } else {
-      html = text.replace(/(?:\r)?\n/g, '<br/>')
+      htmlCode = text.replace(/(?:\r)?\n/g, '<br/>')
     }
   }
 
-  if (html) {
+  if (htmlCode) {
     return React.createElement(component, {
       ...props,
       dangerouslySetInnerHTML: { __html: html }
     })
-  } else {
-    return null
   }
+  return null
 }
 
 HTMLText.propTypes = {

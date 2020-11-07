@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const gulp = require('gulp')
 const pkg = require('./package.json')
 

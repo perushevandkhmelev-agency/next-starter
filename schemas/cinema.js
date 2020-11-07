@@ -5,6 +5,7 @@ export const QUERY_ALL_CINEMA_DETAILS = gql`
     allCinemaDetails(first: $first, last: $last) {
       edges {
         node {
+          id
           slug
           hallName
         }

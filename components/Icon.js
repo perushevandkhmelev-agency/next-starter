@@ -18,9 +18,8 @@ const nameToChar = (name) => {
   const glyph = config.glyphs.find((item) => item.css === name)
   if (glyph) {
     return String.fromCodePoint(glyph.code)
-  } else {
-    return ''
   }
+  return ''
 }
 
 export const renderIcon = (name) => css`

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useMemo } from 'react'
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'

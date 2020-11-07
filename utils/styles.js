@@ -28,9 +28,9 @@ export const maxHeight = css`
 `
 
 export const hidden = (name, before) => {
-  const media = `${before ? 'min' : 'max'}-width: ${dimensions[name] - (before ? 0 : 1)}px`
+  const sizePage = `${before ? 'min' : 'max'}-width: ${dimensions[name] - (before ? 0 : 1)}px`
   return css`
-    @media (${media}) {
+    @media (${sizePage}) {
       display: none !important;
     }
   `
