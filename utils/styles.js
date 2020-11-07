@@ -1,3 +1,4 @@
+/* stylelint-disable */
 import styled, { css } from 'styled-components'
 
 export const colors = {

@@ -31,11 +31,11 @@ export const renderIcon = (name) => css`
   font-style: normal;
   font-variant: normal;
 
-   /* Better Font Rendering =========== */
+  /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-   &:before {
+  &:before {
     content: '${nameToChar(name)}';
   }
 `
