@@ -11,7 +11,8 @@
     "deploy": "./node_modules/.bin/pm2 deploy ecosystem.json production",
     "deploy:setup": "./node_modules/.bin/pm2 deploy ecosystem.json production setup",
     "icons:edit": "gulp icons-edit",
-    "icons:save": "gulp icons-save"
+    "icons:save": "gulp icons-save",
+    "lint": "eslint ."
   },
   "config": {
     "iconsServer": "http://fontello.com",
@@ -46,6 +47,13 @@
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "pm2": "^4.4.0",
