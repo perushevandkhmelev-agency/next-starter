@@ -34,9 +34,9 @@ export default HomePage
 
 const Container = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   min-height: 100vh;
   padding: 0 0.5rem;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
@@ -44,11 +44,11 @@ const Container = styled.div`
 `
 
 const Main = styled.main`
-  flex: 1;
   display: flex;
+  align-items: center;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   padding: 5rem 0;
 `
 
@@ -59,8 +59,8 @@ const Title = styled.h1`
   line-height: 1.15;
 
   a {
-    color: #0070f3;
     text-decoration: none;
+    color: #0070f3;
 
     &:hover,
     &:focus,
@@ -88,8 +88,8 @@ const Code = styled.code`
 const Grid = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   max-width: 800px;
   margin-top: 3rem;
 
@@ -100,21 +100,21 @@ const Grid = styled.div`
 `
 
 const Card = styled.a`
-  margin: 1rem;
   flex-basis: 45%;
+  margin: 1rem;
   padding: 1.5rem;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
   text-align: left;
   text-decoration: none;
   color: inherit;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
 
   &:hover,
   &:focus,
   &:active {
-    border-color: #0070f3;
     color: #0070f3;
+    border-color: #0070f3;
   }
 `
 
@@ -131,8 +131,8 @@ const CardText = styled.p`
 
 const Footer = styled.footer`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100px;
 `

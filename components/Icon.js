@@ -24,12 +24,12 @@ const nameToChar = (name) => {
 }
 
 export const renderIcon = (name) => css`
+  text-transform: none;
   font-family: ${config.name};
   speak: none;
-  font-style: normal;
   font-weight: normal;
+  font-style: normal;
   font-variant: normal;
-  text-transform: none;
 
    /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
