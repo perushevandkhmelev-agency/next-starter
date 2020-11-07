@@ -6,8 +6,6 @@ const queryVars = {
   first: 10
 }
 
-const handleClick = () => console.log('fire')
-
 function ApolloCinemaListExample() {
   const { loading, error, data } = useQuery(QUERY_ALL_CINEMA_DETAILS, {
     variables: queryVars,
@@ -26,9 +24,6 @@ function ApolloCinemaListExample() {
 
   return (
     <section>
-      <button onClick={handleClick} type="submit">
-        fire
-      </button>
       <ul>
         {edges.map(({ node: { id, hallName } }, index) => {
           return (
