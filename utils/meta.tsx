@@ -1,5 +1,5 @@
 import Helmet from 'react-helmet'
-import { colors } from '@utils/styles'
+import { colors } from 'utils/styles'
 
 const defaultTitle = 'Project'
 const defaultDescription = ''

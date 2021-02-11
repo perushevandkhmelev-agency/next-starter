@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import Icon from '@components/Icon'
-import { media } from '@utils/styles'
+import Icon from 'components/Icon'
+import { media } from 'utils/styles'
 
 const HomePage = () => {
   return (
