@@ -12,9 +12,9 @@
     "deploy:setup": "./node_modules/.bin/pm2 deploy ecosystem.json production setup",
     "icons:edit": "gulp icons-edit",
     "icons:save": "gulp icons-save",
+    "type-check": "tsc --noEmit",
     "lint": "eslint .",
-    "lint:styles": "stylelint './**/*.js'",
-    "type-check": "tsc --noEmit"
+    "lint:styles": "stylelint './**/*.{js,jsx,ts,tsx}'"
   },
   "config": {
     "iconsServer": "http://fontello.com",
