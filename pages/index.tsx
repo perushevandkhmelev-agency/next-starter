@@ -93,7 +93,7 @@ const Grid = styled.div`
   max-width: 800px;
   margin-top: 3rem;
 
-  ${media('mobile')} {
+  ${media.mobile} {
     flex-direction: column;
     width: 100%;
   }

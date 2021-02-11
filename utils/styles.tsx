@@ -1,7 +1,6 @@
-/* stylelint-disable */
 import styled, { css } from 'styled-components'
 
-export const colors = {
+export const colors: Record<string, string> = {
   nprogress: 'black',
   main: 'black'
 }
@@ -10,26 +9,23 @@ export const dimensions: Record<string, number> = {
   desktop: 600
 }
 
-export const media = (dimension: string, maxDimension?: string, maxWidth?: boolean) => {
-  const isMobile: boolean = dimension === 'mobile'
-  const mobileDimension: number | '' | undefined = dimensions[Object.keys(dimensions)[0]]
-  const getMaxDimension: number | '' | undefined = maxDimension && dimensions[maxDimension]
-  return getMaxDimension
-    ? `@media (min-width: ${dimensions[dimension]}px) and (max-width: ${getMaxDimension - 1}px)`
-    : `@media (${isMobile || maxWidth ? 'max' : 'min'}-width: ${
-        isMobile ? mobileDimension - 1 : dimensions[dimension] - (maxWidth ? -1 : 0)
-      }px)`
+const maxWidthMediaQuery = (maxWidth: number) => `@media (max-width: ${maxWidth}px)`
+const minWidthMediaQuery = (minWidth: number) => `@media (min-width: ${minWidth}px)`
+
+export const media = {
+  mobile: maxWidthMediaQuery(dimensions.desktop - 1),
+  desktop: minWidthMediaQuery(dimensions.desktop)
 }
 
 export const maxHeight = css`
   height: 100%;
 `
 
-export const hidden = (name: string, before: boolean) => {
-  const sizePage = `${before ? 'min' : 'max'}-width: ${dimensions[name] - (before ? 0 : 1)}px`
+export const hidden = (name: string, before?: boolean) => {
+  const mediaQuery = `${before ? 'min' : 'max'}-width: ${dimensions[name] - (before ? 0 : 1)}px`
   return css`
-    @media (${sizePage}) {
-      display: none !important;
+    @media (${mediaQuery}) {
+      display: none !important; /* stylelint-disable-line */
     }
   `
 }
