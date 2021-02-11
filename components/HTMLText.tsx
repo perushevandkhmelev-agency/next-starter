@@ -1,8 +1,17 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import join from 'lodash/join'
 
-function HTMLText({ text, html, component, paragraphMode, ...props }) {
+interface HTMLTextProps {
+  text?: string
+  html?: string
+  component?:
+    | string
+    | React.FunctionComponent<{ dangerouslySetInnerHTML: { __html: string | undefined } }>
+    | React.ComponentClass<{ dangerouslySetInnerHTML: { __html: string | undefined } }>
+  paragraphMode?: boolean
+}
+
+const HTMLText: React.FC<HTMLTextProps> = ({ text, html, component = 'span', paragraphMode, ...props }) => {
   let htmlCode = html
   if (text) {
     if (paragraphMode) {
@@ -22,14 +31,6 @@ function HTMLText({ text, html, component, paragraphMode, ...props }) {
     })
   }
   return null
-}
-
-HTMLText.propTypes = {
-  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
-}
-
-HTMLText.defaultProps = {
-  component: 'span'
 }
 
 export default HTMLText

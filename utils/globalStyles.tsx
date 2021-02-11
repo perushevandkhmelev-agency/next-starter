@@ -1,6 +1,6 @@
-import { colors } from 'utils/styles'
+import { colors } from '@utils/styles'
 
-export default function GlobalStyles() {
+const GlobalStyles = () => {
   return (
     <style global jsx>
       {`
@@ -63,3 +63,5 @@ export default function GlobalStyles() {
     </style>
   )
 }
+
+export default GlobalStyles

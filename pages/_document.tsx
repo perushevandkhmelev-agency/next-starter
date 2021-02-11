@@ -1,9 +1,13 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import Helmet from 'react-helmet'
+import Helmet, { HelmetData } from 'react-helmet'
 
-export default class MyDocument extends Document {
-  static async getInitialProps(ctx) {
+interface DocumentProps {
+  helmet: HelmetData
+}
+
+export default class MyDocument extends Document<DocumentProps> {
+  static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
 
@@ -43,7 +47,7 @@ export default class MyDocument extends Document {
   get helmetHeadComponents() {
     return Object.keys(this.props.helmet)
       .filter((el) => el !== 'htmlAttributes' && el !== 'bodyAttributes')
-      .map((el) => this.props.helmet[el].toComponent())
+      .map((el) => this.props.helmet[el as keyof HelmetData].toComponent())
   }
 
   render() {

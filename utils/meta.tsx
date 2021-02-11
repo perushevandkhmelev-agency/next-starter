@@ -1,12 +1,12 @@
 import Helmet from 'react-helmet'
-import { colors } from 'utils/styles'
+import { colors } from '@utils/styles'
 
 const defaultTitle = 'Project'
 const defaultDescription = ''
 const defaultImage = ''
 const vkImage = ''
 
-export function GlobalMeta() {
+export const GlobalMeta = () => {
   return (
     <Helmet
       htmlAttributes={{ lang: 'ru' }}
@@ -65,7 +65,11 @@ export function GlobalMeta() {
   )
 }
 
-function Meta({ title }) {
+interface MetaProps {
+  title: string
+}
+
+const Meta = ({ title }: MetaProps) => {
   return (
     <Helmet
       title={title}

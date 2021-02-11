@@ -1,17 +1,18 @@
 import 'normalize.css'
+import { AppProps, AppContext } from 'next/app'
 import NProgress from 'nprogress'
 import Router from 'next/router'
-import { GlobalMeta } from 'utils/meta'
+import { GlobalMeta } from '@utils/meta'
 import { ApolloProvider } from '@apollo/client'
-import { initializeApollo, useApollo } from 'utils/apolloClient'
-import GlobalStyles from 'utils/globalStyles'
-import { IconFont } from 'components/Icon'
+import { initializeApollo, useApollo } from '@utils/apolloClient'
+import GlobalStyles from '@utils/globalStyles'
+import { IconFont } from '@components/Icon'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 
-function App({ Component, pageProps }) {
+function App({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState)
 
   return (
@@ -26,12 +27,13 @@ function App({ Component, pageProps }) {
   )
 }
 
-App.getInitialProps = async ({ Component, ctx }) => {
+App.getInitialProps = async ({ ctx, Component }: AppContext) => {
   const pageProps = {}
 
   if (Component.getInitialProps) {
-    const apolloClient = initializeApollo()
-    Object.assign(pageProps, await Component.getInitialProps({ ...ctx, apolloClient }))
+    const apolloClient = initializeApollo({})
+    const passProps = { ...ctx, apolloClient }
+    Object.assign(pageProps, await Component.getInitialProps(passProps))
   }
 
   return { pageProps }
