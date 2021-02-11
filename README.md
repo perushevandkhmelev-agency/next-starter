@@ -8,9 +8,7 @@
 
 ### .env
 
-    `PORT` — (int, optional) default is `3000`
-    `API_URL` — (string, optional) default is `https://etmdb.com`
-    `AUTHORIZATION` — (string, optional)
+    `NEXT_PUBLIC_API_URL=https://api.graphqlplaceholder.com`
 
 
 ### How to work with icons

@@ -1,0 +1,23 @@
+{
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "env": {
+    "browser": true,
+    "amd": true,
+    "node": true
+  },
+  "extends": ["pk-standard"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "ignorePatterns": ["*.js"]
+}

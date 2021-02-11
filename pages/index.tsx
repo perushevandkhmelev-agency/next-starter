@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Icon from 'components/Icon'
 import { media } from 'utils/styles'
 
-function HomePage() {
+const HomePage = () => {
   return (
     <Container>
       <Main>
@@ -10,7 +10,7 @@ function HomePage() {
           Welcome to <a href="https://github.com/perushevandkhmelev-agency/next-starter">next-starter!</a>
         </Title>
         <Description>
-          Get started by editing <Code>pages/index.js</Code>
+          Get started by editing <Code>pages/index.tsx</Code>
         </Description>
         <Grid>
           <Card href="https://github.com/perushevandkhmelev-agency/next-starter/wiki">
@@ -93,10 +93,10 @@ const Grid = styled.div`
   max-width: 800px;
   margin-top: 3rem;
 
-  ${media.mobile`
-    width: 100%;
+  ${media('mobile')} {
     flex-direction: column;
-  `};
+    width: 100%;
+  }
 `
 
 const Card = styled.a`

@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components'
 import config from 'assets/fonts/icon/config.json'
 
+interface IconProps {
+  name: string
+}
+
 export const IconFont = () => (
   <style global jsx>
     {`
@@ -14,7 +18,7 @@ export const IconFont = () => (
   </style>
 )
 
-const nameToChar = (name) => {
+const nameToChar = (name: string) => {
   const glyph = config.glyphs.find((item) => item.css === name)
   if (glyph) {
     return String.fromCodePoint(glyph.code)
@@ -22,7 +26,7 @@ const nameToChar = (name) => {
   return ''
 }
 
-export const renderIcon = (name) => css`
+export const renderIcon = (name: string) => css`
   text-transform: none;
   font-family: ${config.name};
   speak: none;
@@ -40,5 +44,5 @@ export const renderIcon = (name) => css`
 `
 
 export default styled.i`
-  ${(props) => renderIcon(props.name)}
+  ${(props: IconProps) => renderIcon(props.name)}
 `
