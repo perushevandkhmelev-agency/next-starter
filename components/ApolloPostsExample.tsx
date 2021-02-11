@@ -30,7 +30,7 @@ const ApolloPostsExample = () => {
   return (
     <section>
       <ul>
-        {data.posts.data.map(({ id, title }, index: number) => (
+        {data?.posts.data.map(({ id, title }, index: number) => (
           <li key={id}>
             {index + 1}. {title}
           </li>
