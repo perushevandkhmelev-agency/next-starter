@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client'
+
 import { QUERY_POSTS } from 'schemas/posts'
 
 interface PostsData {

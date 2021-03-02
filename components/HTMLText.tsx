@@ -1,4 +1,5 @@
 import React from 'react'
+
 import join from 'lodash/join'
 
 interface HTMLTextProps {

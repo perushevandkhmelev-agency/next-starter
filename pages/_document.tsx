@@ -1,6 +1,6 @@
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
 import Helmet, { HelmetData } from 'react-helmet'
+import { ServerStyleSheet } from 'styled-components'
 
 interface DocumentProps {
   helmet: HelmetData

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+
 import config from 'assets/fonts/icon/config.json'
 
 interface IconProps {
