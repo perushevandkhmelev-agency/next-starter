@@ -13,11 +13,17 @@
     "amd": true,
     "node": true
   },
-  "extends": ["pk-standard"],
   "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["./"]
+      },
+      "babel-module": {}
+    },
     "react": {
       "version": "detect"
     }
   },
+  "extends": ["pk-standard"],
   "ignorePatterns": ["*.js"]
 }
