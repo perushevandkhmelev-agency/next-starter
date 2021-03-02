@@ -17,7 +17,7 @@
     "lint:styles": "stylelint './**/*.{js,jsx,ts,tsx}'"
   },
   "config": {
-    "iconsServer": "http://fontello.com",
+    "iconsServer": "https://fontello.com",
     "iconsConfig": "assets/fonts/icon/config.json",
     "iconsLocation": [
       "assets/fonts/icon"
