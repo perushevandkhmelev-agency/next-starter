@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 import Icon from 'components/Icon'
-import { media } from 'utils/styles'
 
 const HomePage = () => {
   return (
@@ -94,7 +93,7 @@ const Grid = styled.div`
   max-width: 800px;
   margin-top: 3rem;
 
-  ${media.mobile} {
+  ${({ theme }) => theme.media.mobile} {
     flex-direction: column;
     width: 100%;
   }

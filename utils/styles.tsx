@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { ThemeProvider, css } from 'styled-components'
 
 export const colors: Record<string, string> = {
   nprogress: 'black',
@@ -54,3 +54,15 @@ export const placeholder = (styles: Record<string, number>, parent = '&') => ({
     ...styles
   }
 })
+
+export const RootThemeProvider: React.FC = ({ children }) => {
+  return (
+    <ThemeProvider
+      theme={{
+        media,
+        colors
+      }}>
+      {children}
+    </ThemeProvider>
+  )
+}
