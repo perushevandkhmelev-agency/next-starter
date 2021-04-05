@@ -14,7 +14,8 @@ const minWidthMediaQuery = (minWidth: number) => `@media (min-width: ${minWidth}
 
 export const media = {
   mobile: maxWidthMediaQuery(dimensions.desktop - 1),
-  desktop: minWidthMediaQuery(dimensions.desktop)
+  desktop: minWidthMediaQuery(dimensions.desktop),
+  notTouchScreen: '@media (hover), (min--moz-device-pixel-ratio: 0)'
 }
 
 export const maxHeight = css`
