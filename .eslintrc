@@ -17,13 +17,27 @@
     "import/resolver": {
       "node": {
         "paths": ["./"]
-      },
-      "babel-module": {}
+      }
     },
     "react": {
       "version": "detect"
     }
   },
-  "extends": ["pk-standard"],
-  "ignorePatterns": ["*.js"]
+  "ignorePatterns": ["*.js"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["react", "@typescript-eslint", "import"],
+  "extends": [
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended",
+    "pk-standard"
+  ],
+  "rules": {
+    "@typescript-eslint/no-use-before-define": 0,
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/ban-ts-comment": 0
+  }
 }
