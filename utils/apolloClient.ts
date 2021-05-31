@@ -2,7 +2,13 @@ import { useMemo } from 'react'
 
 import { ApolloClient, InMemoryCache, NormalizedCacheObject, createHttpLink } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
+import merge from 'deepmerge'
 import fetch from 'isomorphic-unfetch'
+import type { AppProps } from 'next/app'
+
+import isEqual from 'lodash/isEqual'
+
+export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__'
 
 let apolloClient: ApolloClient<NormalizedCacheObject>
 
@@ -39,9 +45,18 @@ export function initializeApollo(initialState: NormalizedCacheObject | null = nu
   if (initialState) {
     // Get existing cache, loaded during client side data fetching
     const existingCache = newApolloClient.extract()
-    // Restore the cache using the data passed from getStaticProps/getServerSideProps
-    // combined with the existing cached data
-    newApolloClient.cache.restore({ ...existingCache, ...initialState })
+
+    // Merge the existing cache into data passed from getStaticProps/getServerSideProps
+    const data = merge(initialState, existingCache, {
+      // combine arrays using object equality (like in sets)
+      arrayMerge: (destinationArray, sourceArray) => [
+        ...sourceArray,
+        ...destinationArray.filter((d) => sourceArray.every((s) => !isEqual(d, s)))
+      ]
+    })
+
+    // Restore the cache with the merged data
+    newApolloClient.cache.restore(data)
   }
   // For SSG and SSR always create a new Apollo Client
   if (typeof window === 'undefined') return newApolloClient
@@ -51,7 +66,17 @@ export function initializeApollo(initialState: NormalizedCacheObject | null = nu
   return newApolloClient
 }
 
-export function useApollo(initialState: NormalizedCacheObject) {
-  const store = useMemo(() => initializeApollo(initialState), [initialState])
+export function addApolloState(client: ApolloClient<NormalizedCacheObject>, pageProps: AppProps['pageProps']) {
+  const newPageProps = pageProps
+  if (pageProps?.props) {
+    newPageProps.props[APOLLO_STATE_PROP_NAME] = client.cache.extract()
+  }
+
+  return newPageProps
+}
+
+export function useApollo(pageProps: AppProps['pageProps']) {
+  const state = pageProps[APOLLO_STATE_PROP_NAME]
+  const store = useMemo(() => initializeApollo(state), [state])
   return store
 }
