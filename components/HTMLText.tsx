@@ -2,33 +2,34 @@ import React from 'react'
 
 import join from 'lodash/join'
 
+type InnerHTML = {
+  dangerouslySetInnerHTML: { __html?: string }
+}
+
 interface HTMLTextProps {
   text?: string
   html?: string
-  component?:
-    | string
-    | React.FunctionComponent<{ dangerouslySetInnerHTML: { __html: string | undefined } }>
-    | React.ComponentClass<{ dangerouslySetInnerHTML: { __html: string | undefined } }>
+  component?: string | React.FunctionComponent<InnerHTML> | React.ComponentClass<InnerHTML>
   paragraphMode?: boolean
 }
 
 const HTMLText: React.FC<HTMLTextProps> = ({ text, html, component = 'span', paragraphMode, ...props }) => {
-  let htmlCode = html
+  let innerHTML = html
   if (text) {
     if (paragraphMode) {
-      htmlCode = join(
+      innerHTML = join(
         text.split(/(?:\r)?\n/).map((chunk) => `<p>\n${chunk}\n</p>\n`),
         ''
       )
     } else {
-      htmlCode = text.replace(/(?:\r)?\n/g, '<br/>')
+      innerHTML = text.replace(/(?:\r)?\n/g, '<br/>')
     }
   }
 
-  if (htmlCode) {
+  if (innerHTML) {
     return React.createElement(component, {
       ...props,
-      dangerouslySetInnerHTML: { __html: html }
+      dangerouslySetInnerHTML: { __html: innerHTML }
     })
   }
   return null
