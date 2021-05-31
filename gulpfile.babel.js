@@ -56,7 +56,7 @@ let exec = require('child_process').exec,
       'rm -rf .fontello.src .fontello.zip'
     ])
 
-    exec(scripts.join(' \n '), function (err, stdout, stderr) {
+    return exec(scripts.join(' \n '), function (err, stdout, stderr) {
       if (stderr) {
         console.error(err, stderr)
       } else {
