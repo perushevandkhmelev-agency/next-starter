@@ -11,7 +11,7 @@ export const IconFont = () => (
     {`
       @font-face {
         font-family: icon;
-        src: url('${require('/assets/fonts/icon/icon.woff')}'), url('${require('/assets/fonts/icon/icon.woff2')}');
+        src: url('${require('assets/fonts/icon/icon.woff')}'), url('${require('assets/fonts/icon/icon.woff2')}');
         font-weight: normal;
         font-style: normal;
       }
