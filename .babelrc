@@ -2,7 +2,6 @@
   "presets": [
     ["next/babel",
       {
-        "preset-env": { "corejs": 3, "useBuiltIns": "entry" },
         "styled-jsx": { "optimizeForSpeed": true, "sourceMaps": false }
       }
     ]
