@@ -1,3 +1,9 @@
 {
-  "extends": ["stylelint-config-pk-standard"]
+  "processors": ["stylelint-processor-styled-components"],
+  "plugins": ["stylelint-order"],
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-styled-components",
+    "stylelint-config-pk-standard"
+  ]
 }
