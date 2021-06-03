@@ -38,13 +38,13 @@ export const GlobalMeta = () => {
       //     type: 'application/manifest+json',
       //     crossOrigin: 'use-credentials'
       //   },
-      //   { rel: 'mask-icon', href: '/favicon/safari-pinned-tab.svg', color: colors.main }
+      //   { rel: 'mask-icon', href: '/favicon/safari-pinned-tab.svg', color: colors.primary }
       // ]}
       meta={[
         { name: 'viewport', content: 'width=device-width, user-scalable=no' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
 
-        { name: 'msapplication-TileColor', content: colors.main },
+        { name: 'msapplication-TileColor', content: colors.primary },
         { name: 'theme-color', content: '#ffffff' },
 
         { name: 'description', content: defaultDescription },

@@ -1,28 +1,43 @@
 import styled, { ThemeProvider, css } from 'styled-components'
 
-export const colors: Record<string, string> = {
-  nprogress: 'black',
-  main: 'black'
+export type BreakpointType = keyof typeof dimensions
+export type DeviceType = BreakpointType | 'mobile'
+
+export const RootThemeProvider: React.FC = ({ children }) => {
+  return (
+    <ThemeProvider
+      theme={{
+        media,
+        colors
+      }}>
+      {children}
+    </ThemeProvider>
+  )
 }
 
-export const dimensions: Record<string, number> = {
+export const colors = {
+  nprogress: 'black',
+  primary: 'black'
+} as const
+
+export const dimensions = {
   desktop: 600
-}
+} as const
 
 const maxWidthMediaQuery = (maxWidth: number) => `@media (max-width: ${maxWidth}px)`
 const minWidthMediaQuery = (minWidth: number) => `@media (min-width: ${minWidth}px)`
 
-export const media = {
+export const media: Record<DeviceType, string> = {
   mobile: maxWidthMediaQuery(dimensions.desktop - 1),
-  desktop: minWidthMediaQuery(dimensions.desktop),
-  notTouchScreen: '@media (hover), (min--moz-device-pixel-ratio: 0)'
+  desktop: minWidthMediaQuery(dimensions.desktop)
+  // notTouchScreen: '@media (hover), (min--moz-device-pixel-ratio: 0)'
 }
 
 export const maxHeight = css`
   height: 100%;
 `
 
-export const hidden = (name: string, before?: boolean) => {
+export const hidden = (name: BreakpointType, before?: boolean) => {
   const mediaQuery = `${before ? 'min' : 'max'}-width: ${dimensions[name] - (before ? 0 : 1)}px`
   return css`
     @media (${mediaQuery}) {
@@ -55,15 +70,3 @@ export const placeholder = (styles: Record<string, number>, parent = '&') => ({
     ...styles
   }
 })
-
-export const RootThemeProvider: React.FC = ({ children }) => {
-  return (
-    <ThemeProvider
-      theme={{
-        media,
-        colors
-      }}>
-      {children}
-    </ThemeProvider>
-  )
-}
