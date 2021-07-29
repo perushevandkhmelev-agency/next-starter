@@ -93,7 +93,7 @@ const Grid = styled.div`
   max-width: 800px;
   margin-top: 3rem;
 
-  ${({ theme }) => theme.media.mobile} {
+  ${({ theme }) => theme.breakpoints.only('xs')} {
     flex-direction: column;
     width: 100%;
   }
