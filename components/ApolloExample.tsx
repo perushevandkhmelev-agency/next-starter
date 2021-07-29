@@ -1,15 +1,7 @@
 import { useQuery } from '@apollo/client'
 
-import { QUERY_POSTS } from 'schemas/posts'
-
-interface PostsData {
-  posts: {
-    data: {
-      id: string
-      title: string
-    }[]
-  }
-}
+import { newsItems, newsItemsVariables } from 'schemas/__generated__/newsItems'
+import { QUERY_NEWS_ITEMS } from 'schemas/news'
 
 // const queryVars = {
 //   last: 10,
@@ -17,7 +9,7 @@ interface PostsData {
 // }
 
 const ApolloPostsExample = () => {
-  const { loading, error, data } = useQuery<PostsData>(QUERY_POSTS, {
+  const { loading, error, data } = useQuery<newsItems, newsItemsVariables>(QUERY_NEWS_ITEMS, {
     // variables: queryVars,
     // Setting this value to true will make the component rerender when
     // the "networkStatus" changes, so we are able to know if it is fetching
@@ -31,9 +23,9 @@ const ApolloPostsExample = () => {
   return (
     <section>
       <ul>
-        {data?.posts.data.map(({ id, title }, index: number) => (
-          <li key={id}>
-            {index + 1}. {title}
+        {data?.newsItems?.map((item, index) => (
+          <li key={item?.id}>
+            {index + 1}. {item?.title}
           </li>
         ))}
       </ul>

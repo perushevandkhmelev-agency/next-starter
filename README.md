@@ -8,7 +8,8 @@
 
 ### .env
 
-    `NEXT_PUBLIC_API_URL=https://api.graphqlplaceholder.com`
+    `NEXT_PUBLIC_API_URL` — (string, optional) default is `https://pk-frontend-test.herokuapp.com`
+    `NEXT_PUBLIC_AUTHORIZATION` — (string, optional)
 
 
 ### How to work with icons

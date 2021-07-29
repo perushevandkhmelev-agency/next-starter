@@ -20,6 +20,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "baseUrl": ".",
+    "experimentalDecorators": true,
     "checkJs": false
   },
   "exclude": ["node_modules"],

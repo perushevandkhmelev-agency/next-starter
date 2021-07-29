@@ -6,6 +6,7 @@ out
 node_modules
 .fontello
 .env
+schema.json
 
 # logs
 *.log
