@@ -1,4 +1,4 @@
-import Helmet from 'react-helmet'
+import Helmet, { HelmetProps } from 'react-helmet'
 
 import { colors } from 'utils/styles'
 
@@ -66,11 +66,7 @@ export const GlobalMeta = () => {
   )
 }
 
-interface MetaProps {
-  title: string
-}
-
-const Meta = ({ title }: MetaProps) => {
+const Meta = ({ title }: HelmetProps) => {
   return (
     <Helmet
       title={title}
