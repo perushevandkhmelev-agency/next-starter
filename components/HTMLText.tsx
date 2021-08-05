@@ -2,37 +2,41 @@ import React from 'react'
 
 import join from 'lodash/join'
 
-type InnerHTML = {
-  dangerouslySetInnerHTML: { __html?: string }
-}
-
-interface HTMLTextProps {
+type HTMLTextProps = {
+  component?:
+    | React.ComponentType<{
+        dangerouslySetInnerHTML: { __html: string }
+        ref: React.Ref<HTMLElement>
+      }>
+    | string
   text?: string
-  html?: string
-  component?: string | React.FunctionComponent<InnerHTML> | React.ComponentClass<InnerHTML>
+  html: string
   paragraphMode?: boolean
 }
 
-const HTMLText: React.FC<HTMLTextProps> = ({ text, html, component = 'span', paragraphMode, ...props }) => {
-  let innerHTML = html
+const HTMLText = React.forwardRef<HTMLElement, HTMLTextProps>((props, ref) => {
+  const { text, html, component = 'span', paragraphMode, ...otherProps } = props
+
+  let htmlCode = html
   if (text) {
     if (paragraphMode) {
-      innerHTML = join(
+      htmlCode = join(
         text.split(/(?:\r)?\n/).map((chunk) => `<p>\n${chunk}\n</p>\n`),
         ''
       )
     } else {
-      innerHTML = text.replace(/(?:\r)?\n/g, '<br/>')
+      htmlCode = text.replace(/(?:\r)?\n/g, '<br/>')
     }
   }
 
-  if (innerHTML) {
+  if (htmlCode) {
     return React.createElement(component, {
-      ...props,
-      dangerouslySetInnerHTML: { __html: innerHTML }
+      ...otherProps,
+      ref,
+      dangerouslySetInnerHTML: { __html: htmlCode }
     })
   }
   return null
-}
+})
 
 export default HTMLText
