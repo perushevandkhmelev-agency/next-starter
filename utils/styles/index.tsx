@@ -1,4 +1,4 @@
-import { ThemeProvider, css } from 'styled-components'
+import styled, { ThemeProvider, css } from 'styled-components'
 
 import createBreakpoints, { Breakpoint, breakpointsValues } from './createBreakpoints'
 
@@ -74,7 +74,7 @@ export const placeholder = (styles: Record<string, number>, parent = '&') => ({
   }
 })
 
-export const SrOnly = css`
+export const SrOnly = styled.span`
   position: absolute;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
