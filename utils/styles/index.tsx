@@ -73,3 +73,14 @@ export const placeholder = (styles: Record<string, number>, parent = '&') => ({
     ...styles
   }
 })
+
+export const SrOnly = css`
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+`
