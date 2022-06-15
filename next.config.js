@@ -2,4 +2,9 @@ const withPlugins = require('next-compose-plugins')
 const withFonts = require('next-fonts')
 const withImages = require('next-images')
 
-module.exports = withPlugins([withImages, withFonts])
+module.exports = withPlugins([withImages, withFonts], {
+  swcMinify: true,
+  compiler: {
+    styledComponents: true
+  }
+})

@@ -1,0 +1,32 @@
+{
+  "extends": "next/core-web-vitals",
+  "plugins": ["prettier"],
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", ["parent", "sibling", "index"]],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "lodash/*",
+            "group": "external",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react", "lodash/*"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "sort-imports": ["error", { "ignoreDeclarationSort": true }],
+    "prettier/prettier": ["error", {}, { "usePrettierrc": true }]
+  }
+}

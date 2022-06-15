@@ -11,7 +11,8 @@ export const IconFont = () => (
     {`
       @font-face {
         font-family: icon;
-        src: url('${require('assets/fonts/icon/icon.woff')}'), url('${require('assets/fonts/icon/icon.woff2')}');
+        src: url('${require('assets/fonts/icon/icon.woff').default}'),
+          url('${require('assets/fonts/icon/icon.woff2').default}');
         font-weight: normal;
         font-style: normal;
       }
@@ -44,6 +45,14 @@ export const renderIcon = (name: string) => css`
   }
 `
 
-export default styled.i`
+export default styled.i
+  .attrs(
+    (
+      props //@ts-ignore
+    ) => (!props.as ? { 'aria-hidden': true } : {})
+  )
+  .withConfig({
+    shouldForwardProp: (prop, defaultValidatorFn) => !['name'].includes(prop) && defaultValidatorFn(prop)
+  })`
   ${(props: IconProps) => renderIcon(props.name)}
 `

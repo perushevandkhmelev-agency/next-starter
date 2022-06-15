@@ -6,9 +6,9 @@ import NProgress from 'nprogress'
 
 import { IconFont } from 'components/Icon'
 import { useApollo } from 'utils/apolloClient'
-import GlobalStyles from 'utils/globalStyles'
 import { GlobalMeta } from 'utils/meta'
 import { RootThemeProvider } from 'utils/styles'
+import GlobalStyles from 'utils/styles/globalStyles'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
