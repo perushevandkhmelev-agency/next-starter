@@ -1,5 +1,3 @@
-import join from 'lodash/join'
-
 type SetHTMLTextParams = {
   html: string
   text?: string
@@ -11,10 +9,10 @@ function setHTML({ html, text, paragraphMode }: SetHTMLTextParams) {
 
   if (text) {
     if (paragraphMode) {
-      htmlCode = join(
-        text.split(/(?:\r)?\n/).map((chunk) => `<p>\n${chunk}\n</p>\n`),
-        ''
-      )
+      htmlCode = text
+        .split(/(?:\r)?\n/)
+        .map((chunk) => `<p>\n${chunk}\n</p>\n`)
+        .join('')
     } else {
       htmlCode = text.replace(/(?:\r)?\n/g, '<br/>')
     }
