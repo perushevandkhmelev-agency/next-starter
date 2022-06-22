@@ -1,9 +1,22 @@
 {
-  "processors": ["stylelint-processor-styled-components"],
   "plugins": ["stylelint-order"],
   "extends": [
     "stylelint-config-recommended",
     "stylelint-config-styled-components",
-    "stylelint-config-pk-standard"
+    "stylelint-config-yandex-plus-order"
+  ],
+  "overrides": [
+    {
+      "files": ["**/*.{js,ts,tsx}"],
+      "customSyntax": "@stylelint/postcss-css-in-js",
+      "rules": {
+        "function-no-unknown": null,
+        "no-duplicate-selectors": null,
+        "no-extra-semicolons": null,
+        "property-no-vendor-prefix": null,
+        "property-no-unknown": null,
+        "no-descending-specificity": null
+      }
+    }
   ]
 }
