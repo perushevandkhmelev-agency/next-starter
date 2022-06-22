@@ -3,6 +3,9 @@ const withFonts = require('next-fonts')
 const withImages = require('next-images')
 
 module.exports = withPlugins([withImages, withFonts], {
+  images: {
+    disableStaticImages: true
+  },
   swcMinify: true,
   compiler: {
     styledComponents: true
