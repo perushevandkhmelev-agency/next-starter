@@ -5,9 +5,9 @@ import Icon from 'components/Icon'
 const HomePage = () => {
   return (
     <Container>
-      {[1, 2, 3].map((item) => (
-        <div>{item}</div>
-      ))}
+    {[1, 2, 3].map((item) => (
+      <div>{item}</div>
+    ))}
       <Main>
         <Title>
           Welcome to <a href="https://github.com/perushevandkhmelev-agency/next-starter">next-starter!</a>
