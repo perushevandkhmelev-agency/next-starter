@@ -5,6 +5,9 @@ import Icon from 'components/Icon'
 const HomePage = () => {
   return (
     <Container>
+      {[1, 2, 3].map((item) => (
+        <div>{item}</div>
+      ))}
       <Main>
         <Title>
           Welcome to <a href="https://github.com/perushevandkhmelev-agency/next-starter">next-starter!</a>
@@ -35,8 +38,8 @@ export default HomePage
 const Container = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
   min-height: 100vh;
   padding: 0 0.5rem;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
