@@ -5,13 +5,14 @@ import Icon from 'components/Icon'
 const HomePage = () => {
   return (
     <Container>
+      {[1, 2, 3],map((item) => <div>{item}</div>)}
       <Main>
         <Title>
           Welcome to <a href="https://github.com/perushevandkhmelev-agency/next-starter">next-starter!</a>
         </Title>
-        <Description>
-          Get started by editing <Code>pages/index.tsx</Code>
-        </Description>
+    <Description>
+      Get started by editing <Code>pages/index.tsx</Code>
+    </Description>
         <Grid>
           <Card href="https://github.com/perushevandkhmelev-agency/next-starter/wiki">
             <CardTitle>Wiki &rarr;</CardTitle>
