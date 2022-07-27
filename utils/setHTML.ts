@@ -1,5 +1,5 @@
 type SetHTMLTextParams = {
-  html: string
+  html?: string
   text?: string
   paragraphMode?: boolean
 }
