@@ -14,7 +14,7 @@
     "icons:save": "gulp icons-save",
     "type-check": "tsc --noEmit",
     "lint": "next lint",
-    "lint:styles": "stylelint './**/*.{js,jsx,ts,tsx}'",
+    "lint:styles": "stylelint './**/*.{js,ts,tsx}'",
     "apollo:types": "apollo client:download-schema && apollo codegen:generate --target=typescript && node utils/generatePossibleTypes.js"
   },
   "config": {
