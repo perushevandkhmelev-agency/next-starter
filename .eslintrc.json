@@ -27,6 +27,7 @@
       }
     ],
     "sort-imports": ["error", { "ignoreDeclarationSort": true }],
+    "linebreak-style": ["error", "unix"],
     "prettier/prettier": ["error", {}, { "usePrettierrc": true }]
   }
 }
