@@ -1,9 +1,7 @@
-name: reviewdog
+name: Code Checks
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
     branches: [ "master" ]
 
 jobs:
@@ -12,9 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - uses: reviewdog/action-eslint@v1
         with:
-          reporter: github-pr-review
+          reporter: github-check
           fail_on_error: true
 
   stylelint:
@@ -22,9 +25,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - uses: reviewdog/action-stylelint@v1
         with:
-          reporter: github-pr-review
+          reporter: github-check
           stylelint_input: '**/*.{js,jsx,ts,tsx}'
           fail_on_error: true
 
@@ -33,7 +41,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - uses: EPMatt/reviewdog-action-tsc@v1
         with:
-          reporter: github-pr-review
+          reporter: github-check
           fail_on_error: true

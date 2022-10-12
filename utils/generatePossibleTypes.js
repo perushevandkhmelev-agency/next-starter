@@ -1,13 +1,12 @@
 const fs = require('fs')
+
 const fetch = require('isomorphic-unfetch')
+
 const config = require('../config')
 
 fetch(`${config.apiUrl}/graphql`, {
   method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-    // authorization: config.authorization
-  },
+  headers: { 'Content-Type': 'application/json', authorization: config.authorization },
   body: JSON.stringify({
     variables: {},
     query: `

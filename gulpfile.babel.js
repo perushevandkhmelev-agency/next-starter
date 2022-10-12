@@ -1,8 +1,10 @@
+const exec = require('child_process').exec
+
 const gulp = require('gulp')
+
 const pkg = require('./package.json')
 
-let exec = require('child_process').exec,
-  platform = process.platform,
+let platform = process.platform,
   /**
    * Opens the font-server defined in package.json
    *
