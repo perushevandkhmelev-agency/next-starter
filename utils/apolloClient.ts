@@ -3,7 +3,6 @@ import { useMemo } from 'react'
 import { ApolloClient, InMemoryCache, NormalizedCacheObject, createHttpLink } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import merge from 'deepmerge'
-import fetch from 'isomorphic-unfetch'
 import type { AppProps } from 'next/app'
 
 import isEqual from 'lodash/isEqual'
@@ -13,11 +12,6 @@ import config from 'config'
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__'
 
 let apolloClient: ApolloClient<NormalizedCacheObject>
-
-// Polyfill fetch() on the server (used by apollo-client)
-if (!process.browser) {
-  global.fetch = fetch
-}
 
 function createApolloClient() {
   const httpLink = createHttpLink({

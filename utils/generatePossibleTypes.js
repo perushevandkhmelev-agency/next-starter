@@ -1,7 +1,5 @@
 const fs = require('fs')
 
-const fetch = require('isomorphic-unfetch')
-
 const config = require('../config')
 
 fetch(`${config.apiUrl}/graphql`, {

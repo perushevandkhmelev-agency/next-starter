@@ -27,8 +27,6 @@
   "dependencies": {
     "@apollo/client": "^3.6.8",
     "deepmerge": "^4.2.2",
-    "graphql": "^16.5.0",
-    "isomorphic-unfetch": "^3.1.0",
     "lodash": "^4.17.21",
     "next": "^12.1.6",
     "next-fonts": "^1.5.1",
@@ -41,7 +39,6 @@
   },
   "devDependencies": {
     "@stylelint/postcss-css-in-js": "^0.38.0",
-    "@types/graphql": "^14.5.0",
     "@types/lodash": "^4.14.182",
     "@types/node": "^16.11.40",
     "@types/nprogress": "^0.2.0",
