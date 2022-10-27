@@ -56,6 +56,7 @@ const Title = styled.h1`
   margin: 0;
   text-align: center;
   font-size: 4rem;
+  font-weight: bold;
   line-height: 1.15;
 
   a {
@@ -71,6 +72,7 @@ const Title = styled.h1`
 `
 
 const Description = styled.p`
+  margin-top: 1rem;
   text-align: center;
   font-size: 1.5rem;
   line-height: 1.5;
@@ -121,6 +123,7 @@ const Card = styled.a`
 const CardTitle = styled.h3`
   margin: 0 0 1rem;
   font-size: 1.5rem;
+  font-weight: bold;
 `
 
 const CardText = styled.p`

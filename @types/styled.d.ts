@@ -9,8 +9,6 @@ declare module 'styled-components' {
     colors: typeof colors
     hidden: typeof hidden
     notTouchScreen: typeof notTouchScreen
-    listStyleNone: ThemedCssFunction
-    resetButton: ThemedCssFunction
     placeholder: typeof placeholder
   }
 }

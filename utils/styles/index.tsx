@@ -7,20 +7,7 @@ export { breakpointsValues }
 export const breakpoints = createBreakpoints()
 
 export const RootThemeProvider: React.FC = ({ children }) => {
-  return (
-    <ThemeProvider
-      theme={{
-        breakpoints,
-        colors,
-        hidden,
-        notTouchScreen,
-        listStyleNone,
-        resetButton,
-        placeholder
-      }}>
-      {children}
-    </ThemeProvider>
-  )
+  return <ThemeProvider theme={{ breakpoints, colors, hidden, notTouchScreen, placeholder }}>{children}</ThemeProvider>
 }
 
 export const colors = {
@@ -43,21 +30,6 @@ export const hidden = (breakpoint: Breakpoint, query?: 'up' | 'only') => {
 }
 
 export const notTouchScreen = '@media (hover), (min--moz-device-pixel-ratio: 0)' as const
-
-export const listStyleNone = css`
-  margin: 0;
-  padding: 0;
-  list-style: none;
-`
-
-export const resetButton = css`
-  padding: 0;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-family: inherit;
-`
 
 export const placeholder = (styles: Record<string, number>, parent = '&') => ({
   [`${parent}::-webkit-input-placeholder`]: {

@@ -4,13 +4,6 @@ const GlobalStyles = () => {
   return (
     <style global jsx>
       {`
-        *,
-        *:before,
-        *:after {
-          box-sizing: border-box;
-          -webkit-tap-highlight-color: transparent;
-        }
-
         html {
           width: 100%;
           height: 100%;
@@ -18,32 +11,10 @@ const GlobalStyles = () => {
 
         body {
           height: 100%;
-          -webkit-font-smoothing: antialiased;
         }
 
         #__next {
           height: 100%;
-        }
-
-        a,
-        a:visited {
-          color: inherit;
-          text-decoration: none;
-          transition: color 0.25s;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          margin: 0;
-        }
-
-        b,
-        strong {
-          font-weight: bold;
         }
 
         #nprogress {
