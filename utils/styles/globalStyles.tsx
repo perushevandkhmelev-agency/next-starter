@@ -4,6 +4,10 @@ const GlobalStyles = () => {
   return (
     <style global jsx>
       {`
+        .js-focus-visible :focus:not(.focus-visible) {
+          outline: 0;
+        }
+
         html {
           width: 100%;
           height: 100%;

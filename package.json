@@ -27,6 +27,7 @@
   "dependencies": {
     "@apollo/client": "^3.6.8",
     "deepmerge": "^4.2.2",
+    "focus-visible": "^5.2.0",
     "lodash": "^4.17.21",
     "next": "^12.1.6",
     "next-fonts": "^1.5.1",
