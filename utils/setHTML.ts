@@ -1,3 +1,5 @@
+import sanitizeHtml from 'sanitize-html'
+
 type SetHTMLTextParams = {
   html?: string
   text?: string
@@ -19,7 +21,7 @@ function setHTML({ html, text, paragraphMode }: SetHTMLTextParams) {
   }
 
   if (htmlCode) {
-    return { dangerouslySetInnerHTML: { __html: htmlCode } }
+    return { dangerouslySetInnerHTML: { __html: sanitizeHtml(htmlCode) } }
   }
 
   return {}
