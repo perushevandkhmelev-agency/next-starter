@@ -2,7 +2,7 @@ name: Code Checks
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 jobs:
   eslint:

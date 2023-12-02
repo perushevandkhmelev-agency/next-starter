@@ -19,7 +19,7 @@
     "production": {
       "user":         "www",
       "host":         "host",
-      "ref" :         "origin/master",
+      "ref" :         "origin/main",
       "repo":         "git@github.com:perushevandkhmelev-agency/project/project-frontend.git",
       "path":         "/home/www/project-frontend",
       "post-deploy":  "UV_THREADPOOL_SIZE=100 yarn && NODE_ENV=production yarn build && APP_REVISION=$(git rev-parse --short HEAD) pm2 startOrGracefulReload ecosystem.json --update-env --env production && pm2 save"
