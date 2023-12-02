@@ -1,5 +1,14 @@
 @import 'styles/config/mixins';
 
+[class^='icon-'],
+[class*=' icon-'] {
+  @include icon;
+}
+
+.sr-only {
+  @include sr-only;
+}
+
 .js-focus-visible :focus:not(.focus-visible) {
   outline: 0;
 }
