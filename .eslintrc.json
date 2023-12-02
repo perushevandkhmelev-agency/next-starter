@@ -1,6 +1,6 @@
 {
   "extends": "next/core-web-vitals",
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "ascii"],
   "rules": {
     "import/order": [
       "error",
@@ -28,6 +28,12 @@
     ],
     "sort-imports": ["error", { "ignoreDeclarationSort": true }],
     "linebreak-style": ["error", "unix"],
+    "react/display-name": "warn",
+    "react/jsx-key": "error",
+    "no-duplicate-imports": "warn",
+    "import/no-cycle": "warn",
+    "ascii/valid-name": "error",
+    "no-unused-vars": "warn",
     "prettier/prettier": ["error", {}, { "usePrettierrc": true }]
   }
 }

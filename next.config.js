@@ -1,16 +1,22 @@
-const withFonts = require('next-fonts')
+/** @type {import('next').NextConfig} */
 
-module.exports = withFonts({
+const path = require('path')
+
+module.exports = {
+  cleanDistDir: false,
   swcMinify: true,
   compiler: {
     styledComponents: true
   },
-  experimental: {
-    scrollRestoration: true,
-    modularizeImports: {
-      lodash: {
-        transform: 'lodash/{{member}}'
-      }
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')]
+  },
+  modularizeImports: {
+    lodash: {
+      transform: 'lodash/{{member}}'
     }
+  },
+  experimental: {
+    scrollRestoration: true
   }
-})
+}
