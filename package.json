@@ -15,7 +15,7 @@
     "lint": "eslint . --cache",
     "lint:styles": "stylelint 'styles' --cache",
     "pre-commit": "lint-staged",
-    "apollo:types": "apollo client:download-schema && apollo codegen:generate --target=typescript && node scripts/generatePossibleTypes.js"
+    "apollo:types": "graphql-codegen"
   },
   "config": {
     "iconsServer": "https://fontello.com",
@@ -39,6 +39,10 @@
     "sass": "^1.69.5"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/near-operation-file-preset": "^3.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
     "@types/lodash": "^4.14.182",
     "@types/node": "^18.17.0",
     "@types/nprogress": "^0.2.0",
