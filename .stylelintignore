@@ -1,6 +1,7 @@
-styles/base/preflight.scss
-styles/config/variables.scss
-styles/config/_placeholder.scss
-styles/config/_icons.scss
-styles/config/_breakpoints.scss
 styles/base/icon-codes.css
+styles/base/preflight.scss
+
+styles/config/_breakpoints.scss
+styles/config/_icons.scss
+styles/config/_placeholder.scss
+styles/config/variables.scss
