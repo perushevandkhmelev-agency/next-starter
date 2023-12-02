@@ -1,0 +1,7 @@
+@import 'styles/config/mixins';
+@import 'icon-codes';
+
+[class^='icon-'],
+[class*=' icon-'] {
+  @include icon;
+}

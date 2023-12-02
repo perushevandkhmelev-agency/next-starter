@@ -11,8 +11,26 @@ let platform = process.platform,
    * @return {void} logs to terminal.
    */
   iconsEdit = () => {
+    let linuxBrowser = null
+
+    // Checks whether or not user has the Chrome browser on linux
+    if (platform === 'linux') {
+      const browserList = ['/opt/google/chrome/google-chrome', '/usr/bin/chromium', '/bin/chromium']
+      browserList.find((i) => {
+        if (fs.existsSync(i)) {
+          linuxBrowser = i
+          return true
+        }
+        return false
+      })
+      if (linuxBrowser === null) {
+        console.log('You need Google Chrome and/or Chromium to run this script')
+        return false
+      }
+    }
+
     let openFont = {
-      linux: `/opt/google/chrome/google-chrome --enable-plugins ${pkg.config.iconsServer}/$(cat .fontello)`,
+      linux: `${linuxBrowser} --enable-plugins ${pkg.config.iconsServer}/$(cat .fontello)`,
       darwin: `open -a "Google Chrome" ${pkg.config.iconsServer}/$(cat .fontello)`,
       win32: `start chrome "${pkg.config.iconsServer}/$(cat .fontello)"`
     }
@@ -55,6 +73,7 @@ let platform = process.platform,
     // Clean up
     scripts = scripts.concat([
       `mv $(find ./.fontello.src -maxdepth 1 -name 'fontello-*')/config.json ${pkg.config.iconsConfig}`,
+      `mv $(find ./.fontello.src -maxdepth 1 -name 'fontello-*')/css/icon-codes.css ${pkg.config.iconsStyles}`,
       'rm -rf .fontello.src .fontello.zip'
     ])
 

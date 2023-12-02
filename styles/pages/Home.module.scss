@@ -1,0 +1,203 @@
+@import 'styles/config/mixins';
+
+// BELOW THIS LINE YOU NEED TO DELETE EVERYTHING
+
+.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 6rem;
+}
+
+.description {
+  z-index: 2;
+  display: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  width: 100%;
+  max-width: $max-width;
+  font-family: $font-mono;
+  font-size: 0.85rem;
+
+  @include media-breakpoint-down(md) {
+    font-size: 0.8rem;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+
+    @include media-breakpoint-down(md) {
+      padding: 1rem;
+    }
+  }
+
+  p {
+    position: relative;
+    margin: 0;
+    padding: 1rem;
+    border: 1px solid rgba($callout-border-rgb, 0.3);
+    border-radius: $border-radius;
+    background-color: rgba($callout-rgb, 0.5);
+
+    @include media-breakpoint-down(md) {
+      align-items: center;
+      padding: 2rem 1rem 1.4rem;
+      border: none;
+      border-bottom: 1px solid rgba($callout-border-rgb, 0.25);
+      border-radius: 0;
+      background: linear-gradient(to bottom, rgba($background-start-rgb, 1), rgba($callout-rgb, 0.5));
+      background-clip: padding-box;
+      inset: 0 0 auto;
+      backdrop-filter: blur(24px);
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    p,
+    div {
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    div {
+      z-index: 1;
+      align-items: flex-end;
+      height: 200px;
+      padding: 2rem;
+      pointer-events: none;
+      background: linear-gradient(to bottom, transparent 0%, $background-end-rgb 40%);
+      inset: auto 0 0;
+    }
+  }
+}
+
+.code {
+  font-family: $font-mono;
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(25%, auto));
+  width: $max-width;
+  max-width: 100%;
+
+  @include media-breakpoint-down(md) {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin-bottom: 120px;
+    text-align: center;
+  }
+}
+
+.card {
+  padding: 1rem 1.2rem;
+  transition:
+    background 200ms,
+    border 200ms;
+  border: 1px solid rgba($card-border-rgb, 0);
+  border-radius: $border-radius;
+  background: rgba($card-rgb, 0);
+
+  @include media-breakpoint-down(md) {
+    padding: 1rem 2.5rem;
+  }
+
+  @include hover {
+    &:hover {
+      border: 1px solid rgba($card-border-rgb, 0.15);
+      background: rgba($card-rgb, 0.1);
+    }
+  }
+
+  span {
+    display: inline-block;
+    transition: transform 200ms;
+  }
+
+  @include hover {
+    &:hover span {
+      transform: translateX(4px);
+    }
+  }
+
+  @media (prefers-reduced-motion) {
+    &:hover span {
+      transform: none;
+    }
+  }
+
+  h2 {
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+
+    @include media-breakpoint-down(md) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  p {
+    max-width: 30ch;
+    margin: 0;
+    opacity: 0.6;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+.center {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+
+  @include media-breakpoint-down(md) {
+    padding: 8rem 0 6rem;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    left: 50%;
+    content: '';
+    transform: translateZ(0);
+    filter: blur(45px);
+  }
+
+  &::before {
+    width: 480px;
+    height: 360px;
+    margin-left: -400px;
+    border-radius: 50%;
+    background: $secondary-glow;
+
+    @include media-breakpoint-down(md) {
+      height: 300px;
+      transform: none;
+    }
+  }
+
+  &::after {
+    z-index: -1;
+    width: 240px;
+    height: 180px;
+    background: $primary-glow;
+  }
+}
+
+.logo {
+  position: relative;
+}
+
+.heart {
+  margin-right: 10px;
+  color: red;
+}

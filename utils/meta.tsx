@@ -1,80 +1,133 @@
-import Helmet, { HelmetProps } from 'react-helmet'
+import React from 'react'
 
-import { colors } from 'utils/styles'
+import Head from 'next/head'
 
-const defaultTitle = 'Project'
-const defaultDescription = ''
-const defaultImage = ''
-const vkImage = ''
+type LinkTags = React.LinkHTMLAttributes<HTMLLinkElement>[]
+type MetaTags = React.MetaHTMLAttributes<HTMLMetaElement>[]
+type ScriptTags = React.ScriptHTMLAttributes<HTMLScriptElement>[]
 
-export const GlobalMeta = () => {
+const defaultTitle = 'Create Next App'
+
+let linkTags: LinkTags = [
+  {
+    rel: 'icon',
+    type: 'apple-touch-icon',
+    sizes: '180x180',
+    href: '/favicon/apple-touch-icon.png'
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '32x32',
+    href: '/favicon/favicon-32x32.png'
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '16x16',
+    href: '/favicon/favicon-16x16.png'
+  },
+  {
+    rel: 'manifest',
+    href: '/favicon/site.webmanifest',
+    type: 'application/manifest+json',
+    crossOrigin: 'use-credentials'
+  },
+  {
+    rel: 'mask-icon',
+    href: '/favicon/safari-pinned-tab.svg',
+    color: '#000000'
+  }
+]
+
+const metaTags: MetaTags = [
+  { name: 'apple-mobile-web-app-capable', content: 'yes' },
+  { property: 'og:site_name"', content: defaultTitle },
+  { name: 'msapplication-TileColor', content: '#000000' },
+  { name: 'theme-color', content: '#ffffff' }
+]
+
+export const GlobalMeta = React.memo(function Meta() {
   return (
-    <Helmet
-      htmlAttributes={{ lang: 'ru' }}
-      defaultTitle={defaultTitle}
-      titleTemplate={`%s — ${defaultTitle}`}
-      // link={[
-      //   {
-      //     rel: 'icon',
-      //     type: 'apple-touch-icon',
-      //     sizes: '180x180',
-      //     href: '/favicon/apple-touch-icon.png'
-      //   },
-      //   {
-      //     rel: 'icon',
-      //     type: 'image/png',
-      //     sizes: '32x32',
-      //     href: '/favicon/favicon-32x32.png'
-      //   },
-      //   {
-      //     rel: 'icon',
-      //     type: 'image/png',
-      //     sizes: '16x16',
-      //     href: '/favicon/favicon-16x16.png'
-      //   },
-      //   {
-      //     rel: 'manifest',
-      //     href: '/favicon/site.webmanifest',
-      //     type: 'application/manifest+json',
-      //     crossOrigin: 'use-credentials'
-      //   },
-      //   { rel: 'mask-icon', href: '/favicon/safari-pinned-tab.svg', color: colors.primary }
-      // ]}
-      meta={[
-        { name: 'viewport', content: 'width=device-width, user-scalable=no' },
-        { name: 'apple-mobile-web-app-capable', content: 'yes' },
-
-        { name: 'msapplication-TileColor', content: colors.primary },
-        { name: 'theme-color', content: '#ffffff' },
-
-        { name: 'description', content: defaultDescription },
-
-        { property: 'vk:image', content: vkImage },
-
-        { property: 'og:type', content: 'website' },
-        { property: 'og:site_name', content: defaultTitle },
-        { property: 'og:title', content: defaultTitle },
-        { property: 'og:description', content: defaultDescription },
-        { property: 'og:image', content: defaultImage },
-
-        { name: 'twitter:card', content: 'summary' },
-        { name: 'twitter:title', content: defaultTitle },
-        { name: 'twitter:description', content: defaultDescription },
-        { name: 'twitter:image', content: defaultImage }
-      ]}
-    />
+    <Head>
+      <title>{defaultTitle}</title>
+      {metaTags.map((meta, index) => (
+        <React.Fragment key={String(index)}>
+          <meta {...meta} />
+        </React.Fragment>
+      ))}
+      {linkTags.map((link, index) => (
+        <React.Fragment key={String(index)}>
+          <link {...link} />
+        </React.Fragment>
+      ))}
+    </Head>
   )
+})
+
+interface MetaProps {
+  title?: string
+  description?: string
+  image?: string
+  css?: string[]
+  js?: string[]
 }
 
-const Meta = ({ title }: HelmetProps) => {
+function Meta({ title, description, image, css, js }: MetaProps) {
+  let linkTags: LinkTags = []
+  let metaTags: MetaTags = []
+  let scriptTags: ScriptTags = []
+
+  if (title) {
+    metaTags = metaTags.concat([
+      { property: 'og:title', content: title },
+      { name: 'twitter:title', content: title }
+    ])
+  }
+
+  if (description) {
+    metaTags = metaTags.concat([
+      { name: 'description', content: description },
+      { property: 'og:description', content: description },
+      { name: 'twitter:description', content: description }
+    ])
+  }
+
+  if (image) {
+    metaTags = metaTags.concat([
+      { name: 'image_src', content: image },
+      { property: 'og:image', content: image },
+      { name: 'twitter:image', content: image }
+    ])
+  }
+
+  if (css && css.length > 0) {
+    linkTags = linkTags.concat(css.map((href) => ({ rel: 'stylesheet', href })))
+  }
+
+  if (js && js.length > 0) {
+    scriptTags = scriptTags.concat(js.map((src) => ({ src })))
+  }
+
   return (
-    <Helmet
-      title={title}
-      meta={[
-        { property: 'og:title', content: `${title} — ${defaultTitle}` },
-        { name: 'twitter:title', content: `${title} — ${defaultTitle}` }
-      ]}
-    />
+    <Head>
+      <title>{title || defaultTitle}</title>
+      {metaTags.map((meta, index) => (
+        <React.Fragment key={String(index)}>
+          <meta {...meta} />
+        </React.Fragment>
+      ))}
+      {linkTags.map((link, index) => (
+        <React.Fragment key={String(index)}>
+          <link {...link} />
+        </React.Fragment>
+      ))}
+      {scriptTags.map((script, index) => (
+        <React.Fragment key={String(index)}>
+          <script {...script} />
+        </React.Fragment>
+      ))}
+    </Head>
   )
 }
 
