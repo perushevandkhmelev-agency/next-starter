@@ -3,10 +3,10 @@
     "prettier --write"
   ],
   "*.{js,ts,tsx}": [
-    "eslint --cache --fix"
+    "eslint --fix"
   ],
   "*.{css,scss}": [
-    "stylelint --cache --fix"
+    "stylelint --fix"
   ],
   "*.{ts,tsx}": [
     "bash -c tsc"

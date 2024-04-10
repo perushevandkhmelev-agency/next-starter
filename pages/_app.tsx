@@ -10,8 +10,8 @@ import type { AppProps } from 'next/app'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 
+import { GlobalMeta } from 'components/Meta'
 import { useApollo } from 'utils/apolloClient'
-import { GlobalMeta } from 'utils/meta'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())

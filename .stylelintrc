@@ -1,10 +1,8 @@
 {
   "plugins": ["stylelint-order"],
-  "extends": [
-    "stylelint-config-standard-scss",
-    "stylelint-config-yandex-plus-order"
-  ],
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-yandex-plus-order"],
   "rules": {
-    "selector-id-pattern": null
+    "selector-id-pattern": null,
+    "selector-pseudo-class-no-unknown": [true, { "ignorePseudoClasses": ["global"] }]
   }
 }
