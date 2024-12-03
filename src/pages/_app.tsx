@@ -1,7 +1,7 @@
-import 'styles/base/preflight.scss'
-import 'styles/base/fonts.scss'
-import 'styles/base/globals.scss'
-import 'styles/base/icon-codes.css'
+import '#/styles/base/preflight.scss'
+import '#/styles/base/fonts.scss'
+import '#/styles/base/globals.scss'
+import '#/styles/base/icon-codes.css'
 
 import 'focus-visible'
 
@@ -10,8 +10,8 @@ import type { AppProps } from 'next/app'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 
-import { GlobalMeta } from 'components/Meta'
-import { useApollo } from 'utils/apolloClient'
+import { GlobalMeta } from '#/components/Meta'
+import { useApollo } from '#/utils/apolloClient'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())

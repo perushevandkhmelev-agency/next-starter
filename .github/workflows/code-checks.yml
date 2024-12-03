@@ -2,51 +2,70 @@ name: Code Checks
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
+  pull_request:
+    branches: ['main']
 
 jobs:
   eslint:
-    name: runner / eslint
+    name: lint / eslint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'yarn'
-      - run: yarn install --frozen-lockfile --ignore-scripts
-      - uses: reviewdog/action-eslint@v1
+      - uses: actions/cache@v4
+        id: node-modules-cache
         with:
-          reporter: github-check
-          fail_on_error: true
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+      - name: Install dependencies
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile --ignore-scripts
+      - run: yarn lint
 
   stylelint:
-    name: runner / stylelint
+    name: lint / stylelint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'yarn'
-      - run: yarn install --frozen-lockfile --ignore-scripts
-      - uses: reviewdog/action-stylelint@v1
+      - uses: actions/cache@v4
+        id: node-modules-cache
         with:
-          reporter: github-check
-          stylelint_input: 'styles'
-          fail_on_error: true
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+      - name: Install dependencies
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile --ignore-scripts
+      - run: yarn lint:styles
 
   tsc:
-    name: runner / tsc
+    name: lint / tsc
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'yarn'
-      - run: yarn install --frozen-lockfile --ignore-scripts
-      - uses: EPMatt/reviewdog-action-tsc@v1
+      - uses: actions/cache@v4
+        id: node-modules-cache
         with:
-          reporter: github-check
-          fail_on_error: true
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+      - name: Install dependencies
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile --ignore-scripts
+      - run: yarn tsc

@@ -7,15 +7,13 @@ import type { AppProps } from 'next/app'
 
 import isEqual from 'lodash/isEqual'
 
-import config from 'config'
-
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__'
 
 let apolloClient: ApolloClient<NormalizedCacheObject>
 
 function createApolloClient() {
   const httpLink = createHttpLink({
-    uri: `${config.apiUrl}/graphql`,
+    uri: `${process.env.NEXT_PUBLIC_API_URL}/graphql`,
     credentials: 'same-origin',
     useGETForQueries: true
   })

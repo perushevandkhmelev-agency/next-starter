@@ -1,7 +1,5 @@
 import type { CodegenConfig } from '@graphql-codegen/cli'
 
-import config from './config'
-
 const eslintDisableContent = `
   /** THIS FILE IS AUTO-GENERATED **/
   /** DO NOT EDIT **/
@@ -10,15 +8,18 @@ const eslintDisableContent = `
 
 const codegenConfig: CodegenConfig = {
   overwrite: true,
-  schema: `${config.apiUrl}/graphql`,
-  documents: './schemas/*.ts',
+  schema: `${process.env.NEXT_PUBLIC_API_URL}/graphql`,
+  documents: ['./src/schemas/*.ts', './src/schemas/*.graphql', './src/schemas/fragments/*.ts'],
   ignoreNoDocuments: true,
   hooks: { afterAllFileWrite: ['prettier --write'] },
   generates: {
-    './schemas/__generated__/types.ts': {
-      plugins: [{ add: { content: eslintDisableContent } }, 'typescript']
+    './src/schemas/__generated__/types.ts': {
+      plugins: [{ add: { content: eslintDisableContent } }, 'typescript'],
+      config: {
+        maybeValue: 'T'
+      }
     },
-    './schemas/__generated__/': {
+    './src/schemas/__generated__/': {
       preset: 'near-operation-file',
       presetConfig: {
         baseTypesPath: 'types.ts',
@@ -27,7 +28,11 @@ const codegenConfig: CodegenConfig = {
       plugins: [{ add: { content: eslintDisableContent } }, 'typescript-operations'],
       config: {
         useTypeImports: true,
-        preResolveTypes: false
+        preResolveTypes: true,
+        inlineFragmentTypes: 'combine',
+        avoidOptionals: {
+          field: true
+        }
       }
     }
   }

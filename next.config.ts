@@ -1,15 +1,14 @@
-/** @type {import('next').NextConfig} */
+import path from 'path'
 
-const path = require('path')
+import { NextConfig } from 'next'
 
 const assetsHost = process.env.ASSETS_HOST
 
-module.exports = {
+const nextConfig: NextConfig = {
   cleanDistDir: false,
   assetPrefix: assetsHost,
-  swcMinify: true,
   sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')]
+    includePaths: [path.join(__dirname, 'src/styles')]
   },
   modularizeImports: {
     lodash: {
@@ -25,3 +24,5 @@ module.exports = {
   //   domains: ['host']
   // }
 }
+
+export default nextConfig

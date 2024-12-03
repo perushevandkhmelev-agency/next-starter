@@ -8,7 +8,7 @@ type ScriptTags = React.ScriptHTMLAttributes<HTMLScriptElement>[]
 
 const defaultTitle = 'Create Next App'
 
-let linkTags: LinkTags = [
+const linkTags: LinkTags = [
   {
     rel: 'icon',
     type: 'apple-touch-icon',

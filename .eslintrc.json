@@ -1,6 +1,6 @@
 {
-  "extends": "next/core-web-vitals",
-  "plugins": ["prettier", "ascii"],
+  "plugins": ["@typescript-eslint", "prettier", "ascii"],
+  "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
   "rules": {
     "import/order": [
       "error",
@@ -33,7 +33,13 @@
     "no-duplicate-imports": "warn",
     "import/no-cycle": "warn",
     "ascii/valid-name": "error",
-    "no-unused-vars": "warn",
-    "prettier/prettier": ["error", {}, { "usePrettierrc": true }]
-  }
+    "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-require-imports": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
+    ]
+  },
+  "ignorePatterns": ["src/schemas/__generated__/**/*.ts", "src/schemas/**/__generated__/*.ts"]
 }

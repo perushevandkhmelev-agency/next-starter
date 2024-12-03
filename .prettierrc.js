@@ -1,4 +1,5 @@
 module.exports = {
+  arrowParens: 'always',
   printWidth: 120,
   useTabs: false,
   semi: false,

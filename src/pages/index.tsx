@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { Inter } from 'next/font/google'
 import Image from 'next/image'
 
-import styles from 'styles/pages/Home.module.scss'
+import styles from '#/styles/pages/Home.module.scss'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +20,7 @@ export default function Home() {
       <div className={styles.center}>
         <Image
           className={styles.logo}
-          src={require('assets/img/next.svg')}
+          src={require('#/assets/img/next.svg')}
           alt="Next.js Logo"
           width={180}
           height={37}
