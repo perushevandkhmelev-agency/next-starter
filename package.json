@@ -13,7 +13,6 @@
     "icons:edit": "gulp icons-edit",
     "icons:save": "gulp icons-save",
     "lint": "eslint src/",
-    "lint:styles": "stylelint 'src/styles'",
     "ts:check": "tsc",
     "pre-commit": "lint-staged",
     "apollo:types": "graphql-codegen --require dotenv/config",
@@ -21,24 +20,26 @@
   },
   "config": {
     "iconsServer": "https://fontello.com",
-    "iconsConfig": "assets/fonts/icon/config.json",
-    "iconsStyles": "src/styles/base",
+    "iconsConfig": "src/assets/fonts/icon/config.json",
+    "iconsStyles": "src/styles",
     "iconsLocation": [
       "src/assets/fonts/icon"
     ]
   },
   "dependencies": {
     "@apollo/client": "^3.11.10",
-    "classnames": "^2.5.1",
+    "autoprefixer": "^10.4.20",
+    "clsx": "^2.1.1",
     "deepmerge": "^4.2.2",
     "focus-visible": "^5.2.1",
     "graphql": "^16.9.0",
     "lodash": "^4.17.21",
     "next": "^15.0.3",
     "nprogress": "^0.2.0",
+    "postcss": "^8.4.49",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "sass": "1.77.8"
+    "tailwindcss": "^3.4.16"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^5.0.3",
@@ -60,21 +61,15 @@
     "lint-staged": "^15.2.10",
     "pm2": "^5.4.3",
     "prettier": "^3.4.1",
-    "stylelint": "^16.11.0",
-    "stylelint-config-standard-scss": "^14.0.0",
-    "stylelint-config-yandex-plus-order": "^1.0.2",
-    "stylelint-order": "^6.0.4",
+    "prettier-plugin-tailwindcss": "^0.6.9",
     "typescript": "^5.7.2"
   },
   "lint-staged": {
-    "*.{js,ts,tsx,css,scss}": [
+    "*.{js,ts,tsx,css}": [
       "prettier --write"
     ],
     "*.{js,ts,tsx}": [
       "eslint --fix"
-    ],
-    "*.{css,scss}": [
-      "stylelint --fix"
     ],
     "*.{ts,tsx}": [
       "bash -c tsc"

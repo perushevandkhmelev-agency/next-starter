@@ -1,5 +1,3 @@
-import path from 'path'
-
 import { NextConfig } from 'next'
 
 const assetsHost = process.env.ASSETS_HOST
@@ -7,9 +5,6 @@ const assetsHost = process.env.ASSETS_HOST
 const nextConfig: NextConfig = {
   cleanDistDir: false,
   assetPrefix: assetsHost,
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'src/styles')]
-  },
   modularizeImports: {
     lodash: {
       transform: 'lodash/{{member}}'
