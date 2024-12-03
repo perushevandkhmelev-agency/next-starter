@@ -6,5 +6,9 @@ module.exports = {
   bracketSameLine: true,
   bracketSpacing: true,
   singleQuote: true,
-  trailingComma: 'none'
+  trailingComma: 'none',
+  plugins: ['prettier-plugin-tailwindcss'],
+  tailwindFunctions: ['clsx'],
+  tailwindPreserveWhitespace: false,
+  tailwindPreserveDuplicates: false
 }

@@ -1,7 +1,6 @@
-import '#/styles/base/preflight.scss'
-import '#/styles/base/fonts.scss'
-import '#/styles/base/globals.scss'
-import '#/styles/base/icon-codes.css'
+import '#/styles/globals.css'
+
+import '#/styles/icon-codes.css'
 
 import 'focus-visible'
 
