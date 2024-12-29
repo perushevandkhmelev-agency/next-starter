@@ -46,3 +46,8 @@ body {
   height: 2px;
   background: #000;
 }
+
+body {
+  color: #ededed;
+  background: #0a0a0a;
+}
