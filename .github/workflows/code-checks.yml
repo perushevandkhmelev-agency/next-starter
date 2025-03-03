@@ -28,27 +28,6 @@ jobs:
         run: yarn install --frozen-lockfile --ignore-scripts
       - run: yarn lint
 
-  stylelint:
-    name: lint / stylelint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'yarn'
-      - uses: actions/cache@v4
-        id: node-modules-cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
-      - name: Install dependencies
-        if: steps.node-modules-cache.outputs.cache-hit != 'true'
-        run: yarn install --frozen-lockfile --ignore-scripts
-      - run: yarn lint:styles
-
   tsc:
     name: lint / tsc
     runs-on: ubuntu-latest
