@@ -1,5 +1,7 @@
 import '#/styles/globals.css'
-
+import '#/styles/js-focus-visible.css'
+import '#/styles/nprogress.css'
+import '#/styles/icon.css'
 import '#/styles/icon-codes.css'
 
 import 'focus-visible'

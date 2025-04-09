@@ -6,45 +6,56 @@ type LinkTags = React.LinkHTMLAttributes<HTMLLinkElement>[]
 type MetaTags = React.MetaHTMLAttributes<HTMLMetaElement>[]
 type ScriptTags = React.ScriptHTMLAttributes<HTMLScriptElement>[]
 
+// const websiteUrl = ''
 const defaultTitle = 'Create Next App'
+// const defaultDescription = ''
+// const defaultImage = ''
 
 const linkTags: LinkTags = [
-  {
-    rel: 'icon',
-    type: 'apple-touch-icon',
-    sizes: '180x180',
-    href: '/favicon/apple-touch-icon.png'
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '32x32',
-    href: '/favicon/favicon-32x32.png'
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '16x16',
-    href: '/favicon/favicon-16x16.png'
-  },
-  {
-    rel: 'manifest',
-    href: '/favicon/site.webmanifest',
-    type: 'application/manifest+json',
-    crossOrigin: 'use-credentials'
-  },
-  {
-    rel: 'mask-icon',
-    href: '/favicon/safari-pinned-tab.svg',
-    color: '#000000'
-  }
+  // {
+  //   rel: 'icon',
+  //   type: 'image/png',
+  //   sizes: '96x96',
+  //   href: `${websiteUrl}/favicon/favicon-96x96.png`
+  // },
+  // {
+  //   rel: 'icon',
+  //   type: 'image/svg+xml',
+  //   href: `${websiteUrl}/favicon/favicon.svg`
+  // },
+  // {
+  //   rel: 'shortcut icon',
+  //   href: `${websiteUrl}/favicon/favicon.ico`
+  // },
+  // {
+  //   rel: 'apple-touch-icon',
+  //   sizes: '180x180',
+  //   href: `${websiteUrl}/favicon/apple-touch-icon.png`
+  // },
+  // {
+  //   rel: 'manifest',
+  //   href: `${websiteUrl}/favicon/site.webmanifest`,
+  //   type: 'application/manifest+json',
+  //   crossOrigin: 'use-credentials'
+  // },
+  // {
+  //   rel: 'canonical',
+  //   href: websiteUrl
+  // }
 ]
 
 const metaTags: MetaTags = [
-  { name: 'apple-mobile-web-app-capable', content: 'yes' },
-  { property: 'og:site_name"', content: defaultTitle },
-  { name: 'msapplication-TileColor', content: '#000000' },
-  { name: 'theme-color', content: '#ffffff' }
+  // { property: 'og:site_name', content: defaultTitle },
+  // { property: 'og:url', content: websiteUrl },
+  // { property: 'og:type', content: 'website' },
+  // { name: 'description', content: defaultDescription },
+  // { property: 'og:description', content: defaultDescription },
+  // { name: 'twitter:description', content: defaultDescription },
+  { name: 'theme-color', content: '#000000' }
+  // { name: 'twitter:card', content: 'summary_large_image' },
+  // { name: 'image_src', content: defaultImage },
+  // { property: 'og:image', content: defaultImage },
+  // { name: 'twitter:image', content: defaultImage }
 ]
 
 export const GlobalMeta = React.memo(function Meta() {
