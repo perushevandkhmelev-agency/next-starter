@@ -3,6 +3,7 @@ import { NextConfig } from 'next'
 const assetsHost = process.env.ASSETS_HOST
 
 const nextConfig: NextConfig = {
+  typedRoutes: true,
   reactStrictMode: true,
   cleanDistDir: false,
   assetPrefix: assetsHost,
