@@ -47,4 +47,4 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Run tsc
-        run: pnpm run tsc
+        run: pnpm run ts:check
