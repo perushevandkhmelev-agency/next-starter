@@ -12,39 +12,43 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'yarn'
-      - uses: actions/cache@v4
-        id: node-modules-cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
+          node-version: 22
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+
+      - name: Enable Corepack and prepare pnpm
+        run: |
+          corepack enable
+          pnpm -v
+
       - name: Install dependencies
-        if: steps.node-modules-cache.outputs.cache-hit != 'true'
-        run: yarn install --frozen-lockfile --ignore-scripts
-      - run: yarn lint
+        run: pnpm install --frozen-lockfile --ignore-scripts
+
+      - name: Run lint
+        run: pnpm run lint
 
   tsc:
     name: lint / tsc
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'yarn'
-      - uses: actions/cache@v4
-        id: node-modules-cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
+          node-version: 22
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+
+      - name: Enable Corepack and prepare pnpm
+        run: |
+          corepack enable
+          pnpm -v
+
       - name: Install dependencies
-        if: steps.node-modules-cache.outputs.cache-hit != 'true'
-        run: yarn install --frozen-lockfile --ignore-scripts
-      - run: yarn tsc
+        run: pnpm install --frozen-lockfile --ignore-scripts
+
+      - name: Run tsc
+        run: pnpm run tsc

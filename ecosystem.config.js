@@ -23,7 +23,7 @@ module.exports = {
       repo: 'git@github.com:perushevandkhmelev-agency/project/project-frontend.git',
       path: '/home/www/project-frontend',
       'post-deploy':
-        'UV_THREADPOOL_SIZE=100 yarn && NODE_ENV=production yarn build && APP_REVISION=$(git rev-parse --short HEAD) pm2 startOrGracefulReload ecosystem.config.js --update-env --env production && pm2 save'
+        'UV_THREADPOOL_SIZE=100 pnpm i && NODE_ENV=production pnpm build && APP_REVISION=$(git rev-parse --short HEAD) pm2 startOrGracefulReload ecosystem.config.js --update-env --env production && pm2 save'
     }
   }
 }

@@ -2,10 +2,10 @@
 
 - `git clone git@github.com:perushevandkhmelev-agency/next-starter.git`
 - `cd next-starter`
-- `yarn`
+- `pnpm i`
 - put `.env` file with contents given below
-- `yarn build`
-- `yarn start`
+- `pnpm build`
+- `pnpm start`
 
 ### .env
 
@@ -14,7 +14,7 @@
 ### How to work with icons
 
 - _Make new git branch_
-- `yarn icons:edit` — _to open current config with Fontello for editing_
+- `pnpm icons:edit` — _to open current config with Fontello for editing_
 - _Edit icons in opened browser window and press **"Save session"** when done (don't forget to select newly added icons)_
-- `yarn icons:save`
+- `pnpm icons:save`
 - _Commit changes and make separate PR_
